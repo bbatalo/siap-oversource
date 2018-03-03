@@ -5,9 +5,13 @@
   <title><%= yield :title %> | Oversource</title>
 </head>
 <body>
-  <h1>Sample App</h1>
-  <p>
-    This is the home page for the Oversource application.
-  </p>
+  <div class="center jumbotron">
+    <h1>Oversource</h1>
+    <p>
+      This is the home page for the Oversource application.
+    </p>
+
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
 </body>
 </html>
