@@ -7,8 +7,18 @@ class Loader
   db_header = ['legacy_id', 'legacy_date', 'tag', 'content', 'up_vote_count',
                'down_vote_count', 'comment_count']
 
-  def initialize(filename)
-    @filename = filename
+  def initialize(uploaded_io)
+
+    unless Dir.exist?('public/uploads')
+      Dir.mkdir(Rails.root.join('public/uploads'))
+    end
+
+    @filename = Rails.root.join('public', 'uploads',
+                              uploaded_io.original_filename)
+    File.open(@filename, 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+
   end
 
   def load
