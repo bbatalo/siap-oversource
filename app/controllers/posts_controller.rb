@@ -10,15 +10,15 @@ class PostsController < ApplicationController
   end
 
   def upload
-    # uploaded_io = params[:csv]
-    # filename = Rails.root.join('public', 'uploads',
-    #                            uploaded_io.original_filename)
-    # File.open(filename, 'wb') do |file|
-    #   file.write(uploaded_io.read)
-    # end
-    #
-    # loader = Loader.new(filename)
-    # loader.load
+    uploaded_io = params[:csv]
+    filename = Rails.root.join('public', 'uploads',
+                               uploaded_io.original_filename)
+    File.open(filename, 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+
+    loader = Loader.new(filename)
+    loader.load
 
     redirect_to action: 'index', page: 1
   end
