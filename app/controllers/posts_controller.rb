@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
     loader.load
 
-    redirect_to action: 'index', page: 1
+    # redirect_to action: 'index', page: 1
+    redirect_to root_url
   end
 end
