@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304190017) do
+ActiveRecord::Schema.define(version: 20180304214848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180304190017) do
     t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "value"
     t.index ["post_id"], name: "index_labels_on_post_id"
     t.index ["user_id"], name: "index_labels_on_user_id"
   end
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180304190017) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.boolean "admin", default: false
+    t.integer "post_id"
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 

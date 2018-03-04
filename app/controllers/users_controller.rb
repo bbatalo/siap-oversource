@@ -3,6 +3,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
+    if !@user.post_id.nil?
+      @post = Post.find_by(id: @user.post_id).next
+    else
+      @post = Post.first
+      puts 'UZEO PRVI JEBENO SKK'
+    end
   end
 
   def new
@@ -28,9 +34,24 @@ class UsersController < ApplicationController
 
   end
 
+  def label
+    @post = Post.find_by(id: params[:post_id])
+    @user = User.find_by(id: params[:user_id])
+    unless @post.nil? && @user.nil?
+      unless (value = params[:value].nil?)
+        Label.create(user: @user, post: @post, value: value)
+        @user.post_id = @post.id
+        @user.save
+      end
+    end
+
+    redirect_to @user
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)
   end
+
 end

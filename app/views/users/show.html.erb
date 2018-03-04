@@ -1,10 +1,45 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-3">
     <section class="user_info">
       <h1>
         <%= @user.name %>
+        <br/>
+        <br/>
+        Posts labeled: <%= @user.labels.count %>
+        <br/>
+        <br/>
+        Rank:
       </h1>
     </section>
   </aside>
+  <div class="col-md-9">
+    <%= render @post %>
+    <div class="row">
+      <div class="col-md-4">
+        <%= form_tag(controller: 'users', action: 'label', method: 'post') do %>
+          <%= hidden_field_tag(:value, 'negative') %>
+          <%= hidden_field_tag(:post_id, @post.id) %>
+          <%= hidden_field_tag(:user_id, @user.id) %>
+          <%= submit_tag 'Negative', class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+        <%= form_tag(controller: 'users', action: 'label', method: 'post') do %>
+          <%= hidden_field_tag(:value, 'neutral') %>
+          <%= hidden_field_tag(:post_id, @post.id) %>
+          <%= hidden_field_tag(:user_id, @user.id) %>
+          <%= submit_tag 'Neutral', class: 'btn btn-default' %>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+        <%= form_tag(controller: 'users', action: 'label', method: 'post') do %>
+          <%= hidden_field_tag(:value, 'positive') %>
+          <%= hidden_field_tag(:post_id, @post.id) %>
+          <%= hidden_field_tag(:user_id, @user.id) %>
+          <%= submit_tag 'Positive', class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/signup',     to: 'users#new'
   post '/signup',    to: 'users#create'
+  post '/label', to: 'users#label', as: :label
   resources :users
 
   get    '/login',   to: 'sessions#new'
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
 
   get '/posts', to: 'posts#index', as: :posts
   post '/upload', to: 'posts#upload', as: :upload
+
 end
