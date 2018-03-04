@@ -33,5 +33,7 @@ class Loader
       post.comment_count = row['comment_count']
       post.save
     end
+
+    File.delete(@filename)
   end
 end
