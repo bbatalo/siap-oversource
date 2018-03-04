@@ -1,2 +1,21 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% provide(:title, 'All posts') %>
+<h1>All posts</h1>
+
+
+
+<div class="row">
+  <aside class="col-md-3">
+    <section class="admin_controls">
+      <%= render 'post_form' %>
+    </section>
+  </aside>
+  <div class="col-md-9">
+    <%= will_paginate %>
+
+    <ul class="posts">
+      <%= render @posts %>
+    </ul>
+
+    <%= will_paginate %>
+  </div>
+</div>
