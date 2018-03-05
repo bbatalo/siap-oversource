@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find params[:id]
     if !@user.post_id.nil?
+      puts "STARI: #{@user.post_id}"
       @post = Post.find_by(id: @user.post_id).next
+      puts "NOVI: #{@post.id}"
     else
       @post = Post.first
       puts 'UZEO PRVI JEBENO SKK'
