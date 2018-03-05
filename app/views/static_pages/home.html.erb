@@ -10,8 +10,11 @@
     <p>
       This is the home page for the Oversource application.
     </p>
-
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% if logged_in?  %>
+      <%= link_to "START CLICKING", user_path(@user), class: 'btn btn-lg btn-primary' %>
+    <% else  %>
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% end  %>
   </div>
 </body>
 </html>
