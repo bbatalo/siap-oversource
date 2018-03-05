@@ -40,8 +40,8 @@ class UsersController < ApplicationController
     @post = Post.find_by(id: params[:post_id])
     @user = User.find_by(id: params[:user_id])
     unless @post.nil? && @user.nil?
-      unless (value = params[:value].nil?)
-        Label.create(user: @user, post: @post, value: value)
+      unless params[:value].nil?
+        Label.create(user: @user, post: @post, value: params[:value])
         @user.post_id = @post.id
         @user.save
       end
